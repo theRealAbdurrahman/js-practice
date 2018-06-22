@@ -60,7 +60,12 @@ const Cat = class extends Animal{ //okay so now we are extending the Animal and 
         this.breed = breed;
         this.age = age;
     }
+    burr() {
+        console.log('burrrr!');
+        
+    }
 
 }
 const mu = new Cat('Mu','Himalayan',5);
 mu.eat('Dry food')
+mu.burr();
