@@ -1,5 +1,5 @@
 // class declaration
-class Dog {
+class Dog{
     constructor(name, breed) { // the only required method
         this.name = name;
         this.breed = breed;
@@ -17,7 +17,7 @@ class Dog {
         this.age = age; // you can't use years here because it is the same as the setter name 
     }
 }
-// luna.description // getters are not methods, they are properties  so you don't use paranthesis ()
+// luna.description // getters are not methods, they are properties  so you don't use parentheses ()
 
 
 
@@ -41,18 +41,26 @@ class Animal {
         this.thirst = 100;
         this.belly = [];
     }
+    drink(){
+        this.thirst -=10;
+        return `blup! thirst  =  ${this.thirst}`
+    }
+    eat(food) {
+        this.belly.push(food);
+        return `Yummy! I ate ${food}, now my belly is full with ${this.belly}`
+    }
 }
 
-
-
-
-
-
-
-
-
+const cow = new Animal('bagara');
 
 // class expression
-const Cat = class {
+const Cat = class extends Animal{ //okay so now we are extending the Animal and making a new specie.. first of all we use the keyword extend
+    constructor(name,breed,age) { // then we use the constructor as any regular class
+        super(name); // now here's smth new, we should use the super() method and pass the parent class arguments in it, and it should be used b4 the this keyword
+        this.breed = breed;
+        this.age = age;
+    }
 
 }
+const mu = new Cat('Mu','Himalayan',5);
+mu.eat('Dry food')
