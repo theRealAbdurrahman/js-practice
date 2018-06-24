@@ -1,5 +1,5 @@
 
-function* listPeople(params) {
+function* listPeople() {
     yield 'bedo';
     yield 'yara';
     yield 'noran'
@@ -18,3 +18,22 @@ people.next() // >> {value: "bedo", done: false}
 people.next() // >> {value: "yara", done: false}
 people.next() // >> {value: "noran", done: false}
 people.next() // >> {value: "undefined", done: true}
+
+// ofc you can call
+people.next().value // to get the value without the object and its details 
+
+//NOTE: if you call listPeople().next()  the generator won't advance to the next iteration, and it will yield the same value over and over
+
+
+//the prev yielded values were hard coded, but ofc they can be dynamically generated
+
+function* listNumbers() {
+    let i = 0;
+    yield i;
+    i++;
+    yield i;
+    i++
+    yield i;
+}
+
+const numbers = listNumbers()
