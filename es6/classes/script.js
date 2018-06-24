@@ -5,7 +5,7 @@ class Dog{
         this.breed = breed;
     } // you do need a comma ' , ' here
     greet() {
-        console.log(console.log(`Hi I'm Mr.${this.name} look at me!!`));
+        return console.log(console.log(`Hi I'm Mr.${this.name} look at me!!`));
     }
     static info() { // static methods lives inside the class and it's not inherited
         console.log(`Dogs are AWESOME!!`);
@@ -14,10 +14,10 @@ class Dog{
         return `${this.name} is a ${this.breed} dog`
     }
     set dogAge(age) {
-        this.age = age; // you can't use years here because it is the same as the setter name 
+        this.age = age; 
     }
 }
-// luna.description // getters are not methods, they are properties  so you don't use parentheses ()
+// luna.description // getters and setters are not methods, they are properties  so you don't use parentheses ()
 
 
 
@@ -33,6 +33,9 @@ function getDescription(dog) {
 getDescription(luna);
 luna.age = 2;
 console.log(luna.age);
+luna.dogAge = 5;
+console.log(luna.age);
+
 
 
 class Animal {
