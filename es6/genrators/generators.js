@@ -103,7 +103,7 @@ function* waterfallAJAX() {
     console.log('getting user');
     const user = yield ajax('https://jsonplaceholder.typicode.com/users/1');
     console.log(user);
-    
+
     console.log('getting todo');
     const todos = yield ajax('https://jsonplaceholder.typicode.com/todos/1');
     console.log(todos);
@@ -124,3 +124,18 @@ function* waterfallAJAX() {
     const todos = yield ajax('https://jsonplaceholder.typicode.com/todos/1');
 }
 */
+
+// using for of loop 
+
+function* lyrics() {
+    yield 'wake me up';
+    yield 'wake me up inside';
+    yield "i can't wake up";
+    yield 'wake me up inside';
+    yield 'save meeeee';
+}
+const lyric = lyrics();
+
+for (const line of lyric) { //for of loop is awesome because it can iterate over any type of iterables  except objects
+    console.log(line);
+}
