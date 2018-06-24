@@ -1,4 +1,3 @@
-
 function* listPeople() {
     yield 'bedo';
     yield 'yara';
@@ -85,3 +84,43 @@ function* iterate(list) {
 
 const inventors = iterate(inventorsList)
 inventors.next().value
+
+
+// Using generators to make waterfall like ajax requests
+
+function ajax(url) {
+    fetch(url)
+        .then(data => data.json())
+        .then(data => dataGen.next(data)) // whatever we pass in next will be stored on the variable which stores the result from the yield
+        .catch(err => console.log(err))
+}
+
+function* waterfallAJAX() {
+    console.log('fetching post');
+    const post = yield ajax('https://jsonplaceholder.typicode.com/posts/1');
+    console.log(post);
+
+    console.log('getting user');
+    const user = yield ajax('https://jsonplaceholder.typicode.com/users/1');
+    console.log(user);
+    
+    console.log('getting todo');
+    const todos = yield ajax('https://jsonplaceholder.typicode.com/todos/1');
+    console.log(todos);
+}
+
+const dataGen = waterfallAJAX();
+dataGen.next(); // to start the generator 
+
+
+// cool use case 
+
+/* 
+function* waterfallAJAX() {
+    const post = yield ajax('https://jsonplaceholder.typicode.com/posts/');
+
+    const user = yield ajax('https://jsonplaceholder.typicode.com/users/' + post[0]); // ajax request will fire when i yield the prev wanted value from the other request.
+
+    const todos = yield ajax('https://jsonplaceholder.typicode.com/todos/1');
+}
+*/
